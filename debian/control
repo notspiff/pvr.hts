@@ -5,12 +5,13 @@ Build-Depends: debhelper (>= 8.0.0), cmake, xbmc-pvr-dev,
                libxbmcplatform-dev, xbmc-addon-dev
 Standards-Version: 3.9.2
 Section: libs
-Homepage: <insert the upstream URL, if relevant>
 
 Package: xbmc-pvr-hts
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Conflicts: xbmc-pvr-tvheadend-hts
+Replaces: xbmc-pvr-tvheadend-hts
 Description: TVHeadEnd PVR for XBMC
  TVHeadEnd PVR for XBMC
 
