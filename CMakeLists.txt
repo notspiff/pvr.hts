@@ -1,30 +1,29 @@
-PROJECT(pvr.hts)
+project(pvr.hts)
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+cmake_minimum_required(VERSION 2.6)
 
-ENABLE_LANGUAGE(CXX)
+enable_language(CXX)
 
-FIND_PACKAGE(xbmc REQUIRED)
-FIND_PACKAGE(xbmcplatform REQUIRED)
+find_package(xbmc REQUIRED)
+find_package(xbmcplatform REQUIRED)
 
-addon_version(pvr.hts HTS)
-
-INCLUDE_DIRECTORIES(${xbmcplatform_INCLUDE_DIRS}
+include_directories(${xbmcplatform_INCLUDE_DIRS}
                     ${XBMC_INCLUDE_DIR}
                     ${PROJECT_SOURCE_DIR}/lib)
 
-ADD_DEFINITIONS(-DUSE_DEMUX)
+add_definitions(-DUSE_DEMUX)
 
-SET(SOURCES src/CircBuffer.cpp
-            src/client.cpp
-            src/GUIDialogTranscode.cpp
-            src/HTSPConnection.cpp
-            src/HTSPData.cpp
-            src/HTSPDemux.cpp)
+set(HTS_SOURCES src/CircBuffer.cpp
+                src/client.cpp
+                src/GUIDialogTranscode.cpp
+                src/HTSPConnection.cpp
+                src/HTSPData.cpp
+                src/HTSPDemux.cpp)
 
-ADD_SUBDIRECTORY(lib/libhts)
+add_subdirectory(lib/libhts)
 
-SET(DEPLIBS ${xbmcplatform_LIBRARIES} hts)
+set(DEPLIBS ${xbmcplatform_LIBRARIES} hts)
 
-build_addon(pvr.hts SOURCES DEPLIBS HTS_VERSION)
-install_addon(pvr.hts ${HTS_VERSION})
+build_addon(pvr.hts HTS DEPLIBS)
+
+include(CPack)
