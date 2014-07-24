@@ -23,6 +23,9 @@ set(HTS_SOURCES src/CircBuffer.cpp
 add_subdirectory(lib/libhts)
 
 set(DEPLIBS ${KODIPLATFORM_LIBRARIES} hts)
+if(WIN32)
+  list(APPEND DEPLIBS ws2_32)
+endif()
 
 build_addon(pvr.hts HTS DEPLIBS)
 
