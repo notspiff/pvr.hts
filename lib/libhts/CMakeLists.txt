@@ -8,11 +8,17 @@ SET(SOURCES htsbuf.c
             htsmsg_binary.c
             htsmsg.c
             htsstr.c
-            net_posix.c
             sha1.c)
+if(WIN32)
+  LIST(APPEND SOURCES net_winsock.c)
+
+  include_directories("${PROJECT_SOURCE_DIR}/Win32/include")
+else()
+  LIST(APPEND SOURCES net_posix.c)
+
+  SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -fPIC")
+endif()
 
 ADD_DEFINITIONS(-D_GNU_SOURCE)
-
-SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -fPIC")
 
 ADD_LIBRARY(hts STATIC ${SOURCES})
