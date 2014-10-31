@@ -23,7 +23,7 @@
 
 #include "client.h"
 #include "HTSPTypes.h"
-#include "xbmc/threads/threads.h"
+#include "kodi/threads/threads.h"
 
 extern "C" {
 #include "libhts/net.h"

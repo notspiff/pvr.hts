@@ -20,13 +20,13 @@
  */
 
 #include "HTSPConnection.h"
-#include "xbmc/threads/mutex.h"
-#include "xbmc/util/timeutils.h"
-#include "xbmc/sockets/tcp.h"
+#include "kodi/threads/mutex.h"
+#include "kodi/util/timeutils.h"
+#include "kodi/sockets/tcp.h"
 #include "client.h"
 
 extern "C" {
-#include "xbmc/util/atomic.h"
+#include "kodi/util/atomic.h"
 #include "libhts/htsmsg_binary.h"
 #include "libhts/sha1.h"
 }

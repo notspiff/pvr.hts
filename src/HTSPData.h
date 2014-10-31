@@ -22,7 +22,7 @@
  */
 
 #include "client.h"
-#include "xbmc/threads/threads.h"
+#include "kodi/threads/threads.h"
 #include "HTSPConnection.h"
 #include "CircBuffer.h"
 

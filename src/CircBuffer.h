@@ -21,7 +21,7 @@
  *
  */
 
-#include "xbmc/os.h"
+#include "kodi/os.h"
 
 class CCircBuffer
 {

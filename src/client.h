@@ -20,11 +20,11 @@
  *
  */
 
-#include "xbmc/os.h"
-#include "xbmc/libXBMC_addon.h"
-#include "xbmc/libXBMC_codec.h"
-#include "xbmc/libXBMC_pvr.h"
-#include "xbmc/libXBMC_gui.h"
+#include "kodi/os.h"
+#include "kodi/libXBMC_addon.h"
+#include "kodi/libXBMC_codec.h"
+#include "kodi/libXBMC_pvr.h"
+#include "kodi/libXBMC_gui.h"
 
 extern ADDON::CHelper_libXBMC_addon* XBMC;
 extern CHelper_libXBMC_codec*        CODEC;

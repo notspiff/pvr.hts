@@ -20,13 +20,13 @@
  */
 
 #include "client.h"
-#include "xbmc/xbmc_pvr_dll.h"
+#include "kodi/xbmc_pvr_dll.h"
 #include "HTSPData.h"
 #include "HTSPDemux.h"
 #include "GUIDialogTranscode.h"
-#include "xbmc/threads/mutex.h"
-#include "xbmc/util/atomic.h"
-#include "xbmc/util/util.h"
+#include "kodi/threads/mutex.h"
+#include "kodi/util/atomic.h"
+#include "kodi/util/util.h"
 
 using namespace std;
 using namespace ADDON;

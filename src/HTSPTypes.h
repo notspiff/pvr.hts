@@ -25,10 +25,10 @@
 #include <algorithm>
 #include <vector>
 #include <map>
-#include "xbmc/util/StdString.h"
-#include "xbmc/libXBMC_codec.h"
+#include "kodi/util/StdString.h"
+#include "kodi/libXBMC_codec.h"
 #include "client.h"
-#include "xbmc/xbmc_codec_descriptor.hpp"
+#include "kodi/xbmc_codec_descriptor.hpp"
 
 typedef std::vector<CodecDescriptor> CodecVector;
 

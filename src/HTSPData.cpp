@@ -21,10 +21,10 @@
 
 #include "HTSPData.h"
 #include "HTSPDemux.h"
-#include "xbmc/util/util.h"
+#include "kodi/util/util.h"
 
 extern "C" {
-#include "xbmc/util/atomic.h"
+#include "kodi/util/atomic.h"
 #include "libhts/htsmsg.h"
 #include "libhts/htsmsg_binary.h"
 }

@@ -23,9 +23,9 @@
 
 #include "client.h"
 #include "HTSPConnection.h"
-#include "xbmc/util/buffer.h"
-#include "xbmc/threads/mutex.h"
-#include "xbmc/xbmc_stream_utils.hpp"
+#include "kodi/util/buffer.h"
+#include "kodi/threads/mutex.h"
+#include "kodi/xbmc_stream_utils.hpp"
 
 class CHTSPDemux : public CHTSPConnectionCallback
 {
