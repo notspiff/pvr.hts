@@ -7,7 +7,7 @@ enable_language(CXX)
 find_package(kodi REQUIRED)
 find_package(kodiplatform REQUIRED)
 
-include_directories(${KODIPLATFORM_INCLUDE_DIRS}
+include_directories(${kodiplatform_INCLUDE_DIRS}
                     ${KODI_INCLUDE_DIR}
                     ${PROJECT_SOURCE_DIR}/lib)
 
@@ -22,7 +22,7 @@ set(HTS_SOURCES src/CircBuffer.cpp
 
 add_subdirectory(lib/libhts)
 
-set(DEPLIBS ${KODIPLATFORM_LIBRARIES} hts)
+set(DEPLIBS ${kodiplatform_LIBRARIES} hts)
 if(WIN32)
   list(APPEND DEPLIBS ws2_32)
 endif()
