@@ -16,7 +16,8 @@
  *
  *  You should have received a copy of the GNU General Public License
  *  along with XBMC; see the file COPYING.  If not, write to
- *  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+ *  the Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+ *  MA 02110-1301  USA
  *  http://www.gnu.org/copyleft/gpl.html
  *
  */
@@ -93,6 +94,8 @@ public:
   bool         SeekTime(int time,bool backward,double *startpts);
   void         SetSpeed(int speed);
   PVR_ERROR    GetEdl(const PVR_RECORDING &recinfo, PVR_EDL_ENTRY entries[], int *size);
+  double       DemuxGetTimeshiftTime(void);
+
 private:
   SChannels GetChannels();
   SChannels GetChannels(int tag);
