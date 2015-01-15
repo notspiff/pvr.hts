@@ -1,7 +1,5 @@
-#pragma once
-
 /*
- *      Copyright (C) 2005-2012 Team XBMC
+ *      Copyright (C) 2005-2014 Team XBMC
  *      http://www.xbmc.org
  *
  *  This Program is free software; you can redistribute it and/or modify
@@ -21,38 +19,41 @@
  *
  */
 
+#include "AsyncState.h"
 #include "client.h"
-#include "HTSPTypes.h"
 
-class CGUIDialogTranscode
-{
-
-public:
-  CGUIDialogTranscode(const CodecVector&);
-  virtual ~CGUIDialogTranscode();
-
-  bool Show();
-  void Close();
-  void DoModal();
-
-private:
-  bool OnClick(int controlId);
-  bool OnFocus(int controlId);
-  bool OnInit();
-  bool OnAction(int actionId);
-
-  static bool OnClickCB(GUIHANDLE cbhdl, int controlId);
-  static bool OnFocusCB(GUIHANDLE cbhdl, int controlId);
-  static bool OnInitCB(GUIHANDLE cbhdl);
-  static bool OnActionCB(GUIHANDLE cbhdl, int actionId);
-
-  CAddonGUIWindow *m_window;
-
-  CAddonGUISpinControl *m_spinAudioCodec;
-  CAddonGUISpinControl *m_spinVideoCodec;
-  CAddonGUISpinControl *m_spinResolution;
-  CAddonGUIRadioButton *m_radioTranscode;
-
-  CodecVector m_codecs;
+struct Param {
+  eAsyncState state;
+  AsyncState *self;
 };
 
+using namespace PLATFORM;
+
+AsyncState::AsyncState(int timeout)
+{
+  m_state   = ASYNC_NONE;
+  m_timeout = timeout * 1000;
+}
+
+void AsyncState::SetState(eAsyncState state)
+{
+  CLockObject lock(m_mutex);
+  m_state = state;
+  m_condition.Broadcast();
+}
+
+bool AsyncState::PredicateCallback ( void *p )
+{
+  Param *param = (Param*)p;
+  return param->self->m_state >= param->state;
+}
+
+bool AsyncState::WaitForState(eAsyncState state)
+{
+  Param p;
+  p.state = state;
+  p.self  = this;
+
+  CLockObject lock(m_mutex);
+  return m_condition.Wait(m_mutex, AsyncState::PredicateCallback, (void*)&p, m_timeout);
+}
